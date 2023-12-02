@@ -74,7 +74,7 @@ pub fn part_2(input: String) -> usize {
 }
 
 #[cfg(test)]
-mod tests {
+mod day_1_tests {
     use common::get_input_file;
 
     use super::*;
