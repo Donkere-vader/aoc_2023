@@ -166,13 +166,10 @@ pub fn part_2(input: String) -> usize {
         }
     }
 
-    let mut total = 0;
-    for cogs_numbers in cogs.values() {
-        if cogs_numbers.len() < 2 { continue }
-        total += cogs_numbers.iter().product::<usize>();
-    }
-
-    total
+    cogs.values()
+        .filter(|v| v.len() < 2)
+        .map(|v| v.iter().sum::<usize>())
+        .product()
 }
 
 #[cfg(test)]
