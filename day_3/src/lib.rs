@@ -166,15 +166,6 @@ pub fn part_2(input: String) -> usize {
         }
     }
 
-    for y in 0..matrix.len() {
-        for x in 0..matrix[y].len() {
-            match cogs.get(&(x, y)) {
-                Some(v) => println!("({x}, {y}) {v:?}"),
-                None => {},
-            }
-        }
-    }
-
     let mut total = 0;
     for cogs_numbers in cogs.values() {
         if cogs_numbers.len() < 2 { continue }
