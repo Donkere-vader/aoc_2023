@@ -162,9 +162,9 @@ pub fn part_2(input: String) -> usize {
     }
 
     cogs.values()
-        .filter(|v| v.len() < 2)
-        .map(|v| v.iter().sum::<usize>())
-        .product()
+        .filter(|v| v.len() >= 2)
+        .map(|v| v.iter().product::<usize>())
+        .sum()
 }
 
 #[cfg(test)]
