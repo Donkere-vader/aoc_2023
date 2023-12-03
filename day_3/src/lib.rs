@@ -11,11 +11,7 @@ enum MatrixValue {
 
 impl MatrixValue {
     pub fn is_symbol_or_cog(&self) -> bool {
-        match self {
-            Self::Cog => true,
-            Self::Symbol => true,
-            _ => false,
-        }
+        matches!(self, Self::Cog | Self::Symbol)
     }
 }
 
@@ -33,20 +29,19 @@ impl Display for MatrixValue {
 impl From<char> for MatrixValue {
     fn from(value: char) -> Self {
         if value == '.' {
-            return MatrixValue::Nothing;
+            MatrixValue::Nothing
         } else if value == '*' {
-            return MatrixValue::Cog;
+            MatrixValue::Cog
         } else if value.is_ascii_digit() {
-            return MatrixValue::Number(value as usize - 48);
+            MatrixValue::Number(value as usize - 48)
         } else {
-            return MatrixValue::Symbol;
+            MatrixValue::Symbol
         }
     }
 }
 
 fn parse_input(input: &str) -> Vec<Vec<MatrixValue>> {
-    input.split("\n")
-        .into_iter()
+    input.split('\n')
         .filter(|l| !l.is_empty())
         .map(|l| l.chars().map(MatrixValue::from).collect())
         .collect()

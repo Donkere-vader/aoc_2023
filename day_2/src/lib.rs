@@ -44,7 +44,7 @@ impl From<&str> for Game {
         
         let mut cube_sets = Vec::new();
 
-        for string_cube_set in value.split(";") {
+        for string_cube_set in value.split(';') {
             let cubes = CUBE_AMOUNT_RE.get().unwrap().captures_iter(string_cube_set)
                 .map(|c| (c[1].parse::<usize>().unwrap(), Color::from(&c[2])))
                 .collect::<Vec<(usize, Color)>>();
@@ -60,8 +60,8 @@ impl From<&str> for Game {
 }
 
 fn parse_input(input: &str) -> Vec<Game> {
-    input.split("\n").into_iter()
-        .filter(|l| l.len() > 0)
+    input.split('\n')
+        .filter(|l| !l.is_empty())
         .map(Game::from).collect()
 }
 
@@ -84,7 +84,7 @@ pub fn part_1(input: String) -> usize {
     for game in games.iter() {
         let mut cube_occurrence = HashMap::new();
 
-        for color in vec![Color::Red, Color::Blue, Color::Green] {
+        for color in [Color::Red, Color::Blue, Color::Green] {
             let cube_color_occurrence = highest_occurrence_of_color_in_game(game, &color);
             cube_occurrence.insert(color, cube_color_occurrence);
         }
@@ -106,7 +106,7 @@ pub fn part_2(input: String) -> usize {
     for game in games.iter() {
         let mut game_score = 1;
 
-        for color in vec![Color::Red, Color::Blue, Color::Green] {
+        for color in [Color::Red, Color::Blue, Color::Green] {
             let cube_color_occurrence = highest_occurrence_of_color_in_game(game, &color);
             game_score *= cube_color_occurrence;
         }

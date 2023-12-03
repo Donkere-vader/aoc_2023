@@ -49,7 +49,7 @@ fn extract_text_numbers_and_numbers_from_line(line: &str) -> Vec<usize> {
 fn parse_input(input: &str, extract_fn: &dyn Fn(&str) -> Vec<usize>) -> Vec<Vec<usize>> {
     let mut numbers = Vec::new();
 
-    for line in input.split("\n") {
+    for line in input.split('\n') {
         if line.is_empty() {
             continue;
         }
