@@ -1,0 +1,15 @@
+name: Clippy check
+
+on: push
+
+jobs:
+  clippy_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: clippy
+      - uses: clechasseur/rs-clippy-check@v3
+        with:
+          args: --all-features
