@@ -10,10 +10,10 @@ struct Card {
 fn parse_input(input: &str) -> Vec<Card> {
     let mut cards = Vec::new();
 
-    for line in input.split("\n") {
+    for line in input.split('\n') {
         if line.is_empty() { continue }
 
-        let splitted_line: Vec<&str> = line.split(":").collect();
+        let splitted_line: Vec<&str> = line.split(':').collect();
         let numbers_string = splitted_line[1];
 
         let mut new_card = Card { winning_numbers: Vec::new(), cards_numbers: Vec::new() };
@@ -22,7 +22,7 @@ fn parse_input(input: &str) -> Vec<Card> {
         let mut array = &mut new_card.winning_numbers;
         for c in numbers_string.chars() {
             let transformed_char = c as i32 - 48;
-            if transformed_char <= 9 && transformed_char >= 0 {
+            if (0..=9).contains(&transformed_char) {
                 num = num*10 + transformed_char;
             } else if num != 0 {
                 array.push(num as usize);

@@ -1,9 +1,9 @@
 
-pub fn part_1(input: String) -> usize {
+pub fn part_1(_input: String) -> usize {
     0
 }
 
-pub fn part_2(input: String) -> usize {
+pub fn part_2(_input: String) -> usize {
     0
 }
 
@@ -11,7 +11,7 @@ pub fn part_2(input: String) -> usize {
 mod test {
     use common::get_input_file;
 
-    use super::{part_1, part_2};
+    use super::part_1;
 
     #[test]
     fn part_1_test() {
